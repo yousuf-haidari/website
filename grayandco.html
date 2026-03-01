@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gray & Co. Coffee Shop & Bookstore | Oshawa</title>
+  <meta name="description" content="Independent Bookstore & Coffee Shop in Oshawa. Romantasy, fiction, suspense, YA & more. Lattes, iced drinks, treats, and book-ish merch." />
+  <meta name="theme-color" content="#0b0b0b" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#121212;
+      --muted:#a7a7a7;
+      --text:#f3f3f3;
+      --brand:#d6b27a; /* warm gold */
+      --brand2:#8e6b3a;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(214,178,122,.14), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(142,107,58,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1120px, 92%); margin-inline:auto}
+    .pill{
+      display:inline-flex; gap:.5rem; align-items:center;
+      padding:.45rem .75rem; border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:999px; color:var(--muted); font-size:.92rem;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,11,11,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.9rem 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:.7rem;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(214,178,122,.9), rgba(142,107,58,.8));
+      box-shadow: 0 10px 25px rgba(214,178,122,.12);
+      display:grid; place-items:center;
+      color:#1a1a1a; font-weight:900;
+    }
+    .nav-links{
+      display:flex; gap:1.1rem; align-items:center;
+      color:var(--muted);
+    }
+    .nav-links a{padding:.35rem .4rem; border-radius:10px}
+    .nav-links a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:.8rem 1rem;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14)}
+    .btn-primary{
+      border-color: rgba(214,178,122,.35);
+      background: linear-gradient(135deg, rgba(214,178,122,.18), rgba(142,107,58,.08));
+      box-shadow: 0 14px 45px rgba(214,178,122,.12);
+    }
+
+    .hamburger{display:none}
+
+    /* HERO */
+    .hero{padding: 3.4rem 0 2.2rem}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:2.2rem;
+      align-items:stretch;
+    }
+    .hero h1{
+      font-family:"Playfair Display", serif;
+      font-weight:700;
+      letter-spacing:.2px;
+      line-height:1.08;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      margin: 1rem 0 .8rem;
+    }
+    .hero p{
+      color:var(--muted);
+      font-size:1.05rem;
+      margin:0 0 1.1rem;
+      max-width: 60ch;
+    }
+    .hero-actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem}
+    .stats{
+      display:flex; gap:1rem; flex-wrap:wrap;
+      margin-top:1.4rem;
+      color:var(--muted);
+    }
+    .stat{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:.85rem 1rem;
+      min-width: 155px;
+    }
+    .stat b{display:block; color:var(--text); font-size:1.08rem}
+    .hero-card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-img{
+      height: 100%;
+      min-height: 420px;
+      background:
+        radial-gradient(800px 500px at 40% 20%, rgba(214,178,122,.20), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65)),
+        url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=70");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .hero-card-overlay{
+      position:absolute; inset:auto 0 0 0;
+      padding:1.1rem 1.1rem 1.2rem;
+      border-top:1px solid var(--line);
+      background: rgba(10,10,10,.55);
+      backdrop-filter: blur(12px);
+      display:flex; gap:1rem; align-items:flex-start; justify-content:space-between;
+    }
+    .hero-card-overlay .small{color:var(--muted); font-size:.95rem}
+    .badge{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.45rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(214,178,122,.28);
+      background: rgba(214,178,122,.10);
+      color: #f5e7cf;
+      font-weight:700;
+      font-size:.92rem;
+      white-space:nowrap;
+    }
+
+    /* SECTIONS */
+    section{padding: 2.2rem 0}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:1rem;
+      margin-bottom:1rem;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:1.55rem;
+      font-family:"Playfair Display", serif;
+      letter-spacing:.2px;
+    }
+    .section-title p{margin:0; color:var(--muted)}
+
+    .grid-3{display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem}
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:1.1rem;
+    }
+    .card h3{margin:.2rem 0 .35rem; font-size:1.05rem}
+    .card p{margin:0; color:var(--muted)}
+    .icon{
+      width:40px; height:40px; border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(214,178,122,.16), rgba(142,107,58,.08));
+      border:1px solid rgba(214,178,122,.20);
+      color:#f5e7cf;
+      font-weight:900;
+    }
+
+    /* MENU */
+    .menu-wrap{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:1rem;
+      align-items:start;
+    }
+    .menu-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem}
+    .menu-item{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:1rem;
+      display:flex; gap:.8rem;
+    }
+    .menu-thumb{
+      width:54px; height:54px; border-radius:16px;
+      background: linear-gradient(135deg, rgba(214,178,122,.22), rgba(142,107,58,.10));
+      border:1px solid rgba(255,255,255,.08);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      color:#f5e7cf;
+      font-weight:900;
+    }
+    .menu-item b{display:block}
+    .menu-item .desc{color:var(--muted); font-size:.95rem; margin-top:.25rem}
+    .menu-item .price{margin-top:.55rem; color:#f5e7cf; font-weight:700}
+
+    .menu-aside{
+      position:sticky; top:84px;
+    }
+    .aside-box{
+      border:1px solid rgba(214,178,122,.20);
+      background: linear-gradient(135deg, rgba(214,178,122,.10), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding:1.1rem;
+    }
+    .aside-box h3{margin:0 0 .3rem}
+    .aside-box p{margin:0 0 .8rem; color:var(--muted)}
+    .tag-row{display:flex; flex-wrap:wrap; gap:.5rem}
+    .tag{
+      font-size:.92rem;
+      padding:.35rem .6rem;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+    }
+
+    /* REVIEWS */
+    .reviews{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:1rem;
+    }
+    blockquote{
+      margin:0;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:1.1rem;
+    }
+    blockquote p{margin:0 0 .7rem; color:var(--text)}
+    blockquote footer{color:var(--muted); display:flex; justify-content:space-between; gap:1rem; align-items:center}
+    .stars{letter-spacing:1px; color:#f5e7cf}
+
+    /* FAQ */
+    .faq{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    details{padding:1rem 1.1rem; border-top:1px solid var(--line)}
+    details:first-child{border-top:none}
+    summary{cursor:pointer; font-weight:700}
+    details p{margin:.6rem 0 0; color:var(--muted)}
+
+    /* CONTACT */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:1rem;
+      align-items:stretch;
+    }
+    .map{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      overflow:hidden;
+      min-height: 320px;
+    }
+    .map iframe{width:100%; height:100%; border:0}
+    .contact .card{height:100%}
+
+    /* FOOTER */
+    footer{
+      padding: 2rem 0 2.4rem;
+      border-top: 1px solid var(--line);
+      color:var(--muted);
+    }
+    .footer-grid{
+      display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+      align-items:center;
+    }
+    .fine{font-size:.92rem}
+
+    /* MOBILE */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr; }
+      .hero-img{min-height: 360px}
+      .grid-3{grid-template-columns:1fr}
+      .menu-wrap{grid-template-columns:1fr}
+      .menu-aside{position:static}
+      .menu-grid{grid-template-columns:1fr}
+      .reviews{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .hamburger{
+        display:inline-flex;
+        gap:.5rem; align-items:center;
+        padding:.7rem .9rem;
+        border-radius:14px;
+        border:1px solid var(--line);
+        background:rgba(255,255,255,.04);
+        color:var(--text);
+      }
+      .mobile-menu{
+        display:none;
+        border-top:1px solid var(--line);
+        padding:.8rem 0 1rem;
+      }
+      .mobile-menu a{
+        display:block;
+        padding:.8rem .2rem;
+        color:var(--muted);
+        border-radius:12px;
+      }
+      .mobile-menu a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+      .mobile-menu .btn{width:100%; margin-top:.6rem}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="logo">G</span>
+          <span>Gray &amp; Co.</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#menu">Menu</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQs</a>
+          <a href="#contact">Contact</a>
+          <a class="btn btn-primary" href="https://www.ubereats.com/ca/store/gray-%26-co-coffee-shop/4byuR9ToTbCsBKT77ZB6zg?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjM3JTIwUHJpbmNlJTIwU3QlMjIlMkMlMjJyZWZlcmVuY2UlMjIlM0ElMjJmOTVjODQ3OC0yY2IyLWMyNjYtNmU0Ny0wYzk2M2FiMDhkMzYlMjIlMkMlMjJyZWZlcmVuY2VUeXBlJTIyJTNBJTIydWJlcl9wbGFjZXMlMjIlMkMlMjJsYXRpdHVkZSUyMiUzQTQzLjg5ODQzJTJDJTIwbG9uZ2l0dWRlJTIyJTNBLTc4Ljg2NTEyJTdE&ps=1"
+             target="_blank" rel="noopener">Order</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          Menu ▾
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#menu">Menu</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQs</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary"
+           href="https://www.ubereats.com/ca/store/gray-%26-co-coffee-shop/4byuR9ToTbCsBKT77ZB6zg?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjM3JTIwUHJpbmNlJTIwU3QlMjIlMkMlMjJyZWZlcmVuY2UlMjIlM0ElMjJmOTVjODQ3OC0yY2IyLWMyNjYtNmU0Ny0wYzk2M2FiMDhkMzYlMjIlMkMlMjJyZWZlcmVuY2VUeXBlJTIyJTNBJTIydWJlcl9wbGFjZXMlMjIlMkMlMjJsYXRpdHVkZSUyMiUzQTQzLjg5ODQzJTJDJTIwbG9uZ2l0dWRlJTIyJTNBLTc4Ljg2NTEyJTdE&ps=1"
+           target="_blank" rel="noopener">Order</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div class="pill">Independent Bookstore 📚 • Coffee Shop ☕ • Oshawa</div>
+
+      <div class="hero-grid">
+        <div>
+          <h1>Coffee, books, and cozy vibes—under one roof.</h1>
+          <p>
+            <b>Gray &amp; Co. Coffee Shop &amp; Bookstore</b> is an independent bookstore and coffee shop in Oshawa.
+            Explore romantasy, fiction, suspense, YA & more—plus lattes, iced drinks, treats, and book-ish merch.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary"
+               href="https://www.ubereats.com/ca/store/gray-%26-co-coffee-shop/4byuR9ToTbCsBKT77ZB6zg?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjM3JTIwUHJpbmNlJTIwU3QlMjIlMkMlMjJyZWZlcmVuY2UlMjIlM0ElMjJmOTVjODQ3OC0yY2IyLWMyNjYtNmU0Ny0wYzk2M2FiMDhkMzYlMjIlMkMlMjJyZWZlcmVuY2VUeXBlJTIyJTNBJTIydWJlcl9wbGFjZXMlMjIlMkMlMjJsYXRpdHVkZSUyMiUzQTQzLjg5ODQzJTJDJTIwbG9uZ2l0dWRlJTIyJTNBLTc4Ljg2NTEyJTdE&ps=1"
+               target="_blank" rel="noopener">Order on Uber Eats</a>
+            <a class="btn" href="#menu">View Menu</a>
+            <a class="btn" href="#contact">Hours & Location</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <b>4.4★ Rating</b>
+              <span>127 reviews</span>
+            </div>
+            <div class="stat">
+              <b>$1–10</b>
+              <span>Affordable treats</span>
+            </div>
+            <div class="stat">
+              <b>Books + Gifts</b>
+              <span>Book-ish merch</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Preview image">
+          <div class="hero-img" role="img" aria-label="Bookstore and coffee"></div>
+          <div class="hero-card-overlay">
+            <div>
+              <div style="font-weight:800; margin-bottom:.25rem;">Gray &amp; Co.</div>
+              <div class="small">Coffee Shop &amp; Bookstore</div>
+            </div>
+            <div class="badge">Centre St S • Oshawa</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>What you’ll find</h2>
+        <p>Books. Coffee. Treats. Gifts.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>Independent bookstore</h3>
+          <p>Romantasy, fiction, suspense, YA & more—curated with love.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">☕</div>
+          <h3>Drinks & treats</h3>
+          <p>Lattes, iced drinks, and sweet bites to match your next read.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛍️</div>
+          <h3>Merch & gifts</h3>
+          <p>Book-ish merch, gifts, and goodies for readers and coffee lovers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU (Preview) -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-title">
+        <h2>Menu preview</h2>
+        <p>Example layout — final menu can be added anytime.</p>
+      </div>
+
+      <div class="menu-wrap">
+        <div class="menu-grid" aria-label="Menu items">
+          <div class="menu-item">
+            <div class="menu-thumb">☕</div>
+            <div>
+              <b>Signature Latte</b>
+              <div class="desc">Smooth espresso with a cozy finish.</div>
+              <div class="price">$ —</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-thumb">🧊</div>
+            <div>
+              <b>Iced Drink</b>
+              <div class="desc">Chilled, refreshing, and perfectly balanced.</div>
+              <div class="price">$ —</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-thumb">🧁</div>
+            <div>
+              <b>Treat of the day</b>
+              <div class="desc">A sweet bite for your next chapter.</div>
+              <div class="price">$ —</div>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-thumb">🥤</div>
+            <div>
+              <b>Cold Refresher</b>
+              <div class="desc">Light and fruity, perfect for afternoons.</div>
+              <div class="price">$ —</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="menu-aside">
+          <div class="aside-box">
+            <h3>Want delivery?</h3>
+            <p>Tap Order to open Gray &amp; Co. on Uber Eats.</p>
+            <div class="tag-row">
+              <span class="tag">Fast & clean</span>
+              <span class="tag">Mobile-friendly</span>
+              <span class="tag">Easy directions</span>
+              <span class="tag">Order button</span>
+            </div>
+            <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+              <a class="btn btn-primary"
+                 href="https://www.ubereats.com/ca/store/gray-%26-co-coffee-shop/4byuR9ToTbCsBKT77ZB6zg?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjM3JTIwUHJpbmNlJTIwU3QlMjIlMkMlMjJyZWZlcmVuY2UlMjIlM0ElMjJmOTVjODQ3OC0yY2IyLWMyNjYtNmU0Ny0wYzk2M2FiMDhkMzYlMjIlMkMlMjJyZWZlcmVuY2VUeXBlJTIyJTNBJTIydWJlcl9wbGFjZXMlMjIlMkMlMjJsYXRpdHVkZSUyMiUzQTQzLjg5ODQzJTJDJTIwbG9uZ2l0dWRlJTIyJTNBLTc4Ljg2NTEyJTdE&ps=1"
+                 target="_blank" rel="noopener">Order</a>
+              <a class="btn" href="#contact">Hours</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS (Preview) -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-title">
+        <h2>Reviews preview</h2>
+        <p>Layout example — can be connected to Google Reviews.</p>
+      </div>
+
+      <div class="reviews">
+        <blockquote>
+          <p>“Such a cozy spot—great coffee and an amazing little bookstore.”</p>
+          <footer>
+            <span>Customer review</span>
+            <span class="stars">★★★★★</span>
+          </footer>
+        </blockquote>
+
+        <blockquote>
+          <p>“Perfect place to grab a latte and browse for my next read.”</p>
+          <footer>
+            <span>Customer review</span>
+            <span class="stars">★★★★★</span>
+          </footer>
+        </blockquote>
+
+        <blockquote>
+          <p>“Friendly vibes, cute merch, and treats that hit the spot.”</p>
+          <footer>
+            <span>Customer review</span>
+            <span class="stars">★★★★★</span>
+          </footer>
+        </blockquote>
+      </div>
+
+      <div style="margin-top:1rem; display:flex; gap:.7rem; flex-wrap:wrap;">
+        <a class="btn btn-primary"
+           href="https://www.ubereats.com/ca/store/gray-%26-co-coffee-shop/4byuR9ToTbCsBKT77ZB6zg?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjM3JTIwUHJpbmNlJTIwU3QlMjIlMkMlMjJyZWZlcmVuY2UlMjIlM0ElMjJmOTVjODQ3OC0yY2IyLWMyNjYtNmU0Ny0wYzk2M2FiMDhkMzYlMjIlMkMlMjJyZWZlcmVuY2VUeXBlJTIyJTNBJTIydWJlcl9wbGFjZXMlMjIlMkMlMjJsYXRpdHVkZSUyMiUzQTQzLjg5ODQzJTJDJTIwbG9uZ2l0dWRlJTIyJTNBLTc4Ljg2NTEyJTdE&ps=1"
+           target="_blank" rel="noopener">Order</a>
+        <a class="btn" href="#contact">Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>FAQs</h2>
+        <p>Quick answers customers look for.</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>What kind of books do you carry?</summary>
+          <p>Romantasy, fiction, suspense, YA, and more—plus book-ish merch and gifts.</p>
+        </details>
+        <details>
+          <summary>Do you offer lattes and iced drinks?</summary>
+          <p>Yes—lattes, iced drinks, and treats are available during open hours.</p>
+        </details>
+        <details>
+          <summary>Do you offer delivery?</summary>
+          <p>Yes—use the Order button to open Gray &amp; Co. on Uber Eats.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / HOURS & LOCATION -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hours & Location</h2>
+        <p>Everything customers need to visit.</p>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <h3 style="margin-top:0;">Gray &amp; Co. Coffee Shop &amp; Bookstore</h3>
+          <p style="margin:.35rem 0 1rem; color:var(--muted);">
+            📚 Independent Bookstore &amp; Coffee Shop ☕<br>
+            Romantasy • Fiction • Suspense • YA &amp; more<br>
+            🧁 Lattes • Iced Drinks • Treats • 🛍️ Book-ish Merch + Gifts
+          </p>
+
+          <div style="display:grid; gap:.8rem;">
+            <div>
+              <b>Address</b>
+              <div style="color:var(--muted); margin-top:.25rem;">
+                83 Centre St S, Oshawa, ON L1H 4A1
+              </div>
+            </div>
+
+            <div>
+              <b>Hours</b>
+              <div style="color:var(--muted); margin-top:.25rem;">
+                Sunday: Closed<br>
+                Monday: 10 a.m. – 4 p.m.<br>
+                Tuesday: 10 a.m. – 4 p.m.<br>
+                Wednesday: 10 a.m. – 4 p.m.<br>
+                Thursday: 10 a.m. – 4 p.m.<br>
+                Friday: 10 a.m. – 4 p.m.<br>
+                Saturday: 10 a.m. – 4 p.m.
+              </div>
+            </div>
+
+            <div>
+              <b>Phone</b>
+              <div style="color:var(--muted); margin-top:.25rem;">
+                (289) 460-1149
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1rem;">
+            <a class="btn btn-primary"
+               href="https://www.google.com/maps?q=83%20Centre%20St%20S%20Oshawa%20ON%20L1H%204A1"
+               target="_blank" rel="noopener">Directions</a>
+
+            <a class="btn"
+               href="https://www.ubereats.com/ca/store/gray-%26-co-coffee-shop/4byuR9ToTbCsBKT77ZB6zg?diningMode=DELIVERY&pl=JTdCJTIyYWRkcmVzcyUyMiUzQSUyMjM3JTIwUHJpbmNlJTIwU3QlMjIlMkMlMjJyZWZlcmVuY2UlMjIlM0ElMjJmOTVjODQ3OC0yY2IyLWMyNjYtNmU0Ny0wYzk2M2FiMDhkMzYlMjIlMkMlMjJyZWZlcmVuY2VUeXBlJTIyJTNBJTIydWJlcl9wbGFjZXMlMjIlMkMlMjJsYXRpdHVkZSUyMiUzQTQzLjg5ODQzJTJDJTIwbG9uZ2l0dWRlJTIyJTNBLTc4Ljg2NTEyJTdE&ps=1"
+               target="_blank" rel="noopener">Order</a>
+          </div>
+
+          <p class="fine" style="margin-top:1rem;">
+            Preview site only — menu, photos, events, and Google reviews can be added after approval.
+          </p>
+        </div>
+
+        <div class="map">
+          <iframe
+            title="Gray & Co. Location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=83%20Centre%20St%20S%20Oshawa%20ON%20L1H%204A1&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="brand">
+          <span class="logo">G</span>
+          <span>
+            <b style="color:var(--text)">Gray &amp; Co.</b><br/>
+            <span class="fine">Coffee Shop &amp; Bookstore • Oshawa</span>
+          </span>
+        </div>
+        <div class="fine">© <span id="year"></span> Gray &amp; Co. • All rights reserved</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    hamburger?.addEventListener("click", () => {
+      const open = mobileMenu.style.display === "block";
+      mobileMenu.style.display = open ? "none" : "block";
+      hamburger.setAttribute("aria-expanded", String(!open));
+    });
+
+    // Close mobile menu on link click
+    mobileMenu?.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.style.display = "none";
+        hamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
